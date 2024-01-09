@@ -38,11 +38,7 @@ class SystemWideConnectionFactory implements BasicConnectionFactoryInterface
     {
         if (self::$instance === null) {
             $factory = new StreamConnectionFactory();
-            if (extension_loaded('sockets')) {
-                self::$instance = new self(new SocketConnectionFactory($factory));
-            } else {
-                self::$instance = new self($factory);
-            }
+            self::$instance = new self($factory);
         }
 
         /** @psalm-suppress NullableReturnStatement */
